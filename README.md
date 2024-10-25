@@ -1,5 +1,11 @@
-# tock
+# tock (reverse)
+-----------------------------------------------------------------------------------
 
+i needed something that could show me how much time left in a day with cool graphics
+so i modified this a tiny bit to my needs.
+
+
+-----------------------------------------------------------------------------------
 A digital clock for the terminal, inspired by [tty-clock][0].
 Unfortunately only works on UNIX systems due to the use of
 the `termios` and `sigaction` related function calls.
