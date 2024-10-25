@@ -6,9 +6,17 @@ use crate::font;
 
 /// Retrieves current date and time with provided formatting modifiers.
 pub fn now(second: bool, military: bool) -> (Date, Time) {
-    let now = chrono::Local::now().naive_local();
+    let mut now = chrono::Local::now().naive_local();
+ let midnight = NaiveTime::from_hms_opt(0, 0, 0).unwrap(); 
+
+    // Subtract the current time from 24:00:00
+    let time_remaining = midnight - now.time();
+
+    // Calculate the new time by subtracting the duration from now
+    let new_time: NaiveTime = midnight + time_remaining;
+
     let date = Date::new(now.date());
-    let time = Time::new(now.time(), second, military);
+    let time = Time::new(new_time, true, true);
     (date, time)
 }
 
